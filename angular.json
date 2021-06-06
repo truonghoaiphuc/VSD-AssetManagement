@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "29b26dc3-79be-4bc5-b327-26c1bf0860aa"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -28,6 +31,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles.scss",
               "src/styles.css"
             ],
             "scripts": []
@@ -59,17 +63,30 @@
                   "maximumError": "4kb"
                 }
               ]
+            },
+            "hmr": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.hmr.ts"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "VSD-AssetManagement:build"
+            "browserTarget": "VSD-AssetManagement:build",
+            "proxyConfig": "proxy.config.js"
           },
           "configurations": {
             "production": {
               "browserTarget": "VSD-AssetManagement:build:production"
+            },
+            "hmr": {
+              "hmr": true,
+              "browserTarget": "VSD-AssetManagement:build:hmr"
             }
           }
         },
@@ -91,6 +108,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles.scss",
               "src/styles.css"
             ],
             "scripts": []
