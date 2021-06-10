@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '@core/authentication/auth.service';
 import { debounceTime, tap } from 'rxjs/operators';
 import { User } from '@core/authentication/interface';
+import { LoggedInUser } from '@core/domain/loggedin.user';
 
 @Component({
   selector: 'app-user',
@@ -13,7 +14,7 @@ import { User } from '@core/authentication/interface';
       [matMenuTriggerFor]="menu"
     >
       <img class="matero-avatar" [src]="user.avatar" width="32" alt="avatar" />
-      <span class="matero-username" fxHide.lt-sm>{{ user.name }}</span>
+      <span class="matero-username" fxHide.lt-sm>{{ user.fullName }}</span>
     </button>
 
     <mat-menu #menu="matMenu">
@@ -33,18 +34,19 @@ import { User } from '@core/authentication/interface';
   `,
 })
 export class UserComponent implements OnInit {
-  user: User;
+  user: LoggedInUser;
 
   constructor(private router: Router, private auth: AuthService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.auth
-      .user()
-      .pipe(
-        tap(user => (this.user = user)),
-        debounceTime(10)
-      )
-      .subscribe(() => this.cdr.detectChanges());
+    // this.auth
+    //   .user()
+    //   .pipe(
+    //     tap(user => (this.user = user)),
+    //     debounceTime(10)
+    //   )
+    //   .subscribe(() => this.cdr.detectChanges());
+    this.user = this.auth.user();
   }
 
   logout() {

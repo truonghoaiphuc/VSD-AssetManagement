@@ -24,6 +24,7 @@ import { FormlyConfigModule } from './formly-config.module';
 import { BASE_URL } from '@core/interceptors/base-url-interceptor';
 import { environment } from '@env/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DataService } from '@shared/services/data.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -49,6 +50,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     { provide: BASE_URL, useValue: environment.baseUrl },
     httpInterceptorProviders,
     appInitializerProviders,
+    DataService
   ],
   bootstrap: [AppComponent],
 })

@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@core/authentication/auth.service';
 import { User } from '@core/authentication/interface';
 import { Router } from '@angular/router';
+import { LoggedInUser } from '@core/domain/loggedin.user';
 
 @Component({
   selector: 'app-user-panel',
   template: `
     <div class="matero-user-panel" fxLayout="column" fxLayoutAlign="center center">
       <img class="matero-user-panel-avatar" [src]="user.avatar" alt="avatar" width="64" />
-      <h4 class="matero-user-panel-name">{{ user.name }}</h4>
+      <h4 class="matero-user-panel-name">{{ user.fullName }}</h4>
       <h5 class="matero-user-panel-email">{{ user.email }}</h5>
       <div class="matero-user-panel-icons">
         <a routerLink="/profile/overview" mat-icon-button>
@@ -26,12 +27,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-panel.component.scss'],
 })
 export class UserPanelComponent implements OnInit {
-  user: User;
+  user: LoggedInUser;
 
   constructor(private router: Router, private auth: AuthService) {}
 
   ngOnInit(): void {
-    this.auth.user().subscribe(user => (this.user = user));
+    // this.auth.user().subscribe(user => (this.user = user));
+    this.user = this.auth.user();
   }
 
   logout() {

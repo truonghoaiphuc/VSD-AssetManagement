@@ -5,11 +5,11 @@
     <form class="form-field-full" [formGroup]="loginForm">
 
       <mat-form-field appearance="outline">
-        <mat-label>{{'login.username' | translate}}: ng-matero</mat-label>
-        <input matInput placeholder="ng-matero" formControlName="username" required>
+        <mat-label>Tên đăng nhập:</mat-label>
+        <input matInput placeholder="Tên đăng nhập" formControlName="username" required>
         <mat-error *ngIf="username.invalid">
           <span *ngIf="username.errors.required">
-            {{'login.please_enter' | translate}} <strong>ng-matero</strong>
+            Vui lòng nhập tên đăng nhập
           </span>
 
           <span *ngIf="username.errors.remote">
@@ -19,12 +19,12 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>{{'login.password' | translate}}: ng-matero</mat-label>
-        <input matInput placeholder="ng-matero" type="password"
+        <mat-label>Mật khẩu:</mat-label>
+        <input matInput placeholder="Mật khẩu" type="password"
                formControlName="password" required>
         <mat-error *ngIf="password.invalid">
           <span *ngIf="password.errors.required">
-            {{'login.please_enter' | translate}} <strong>ng-matero</strong>
+            Vui lòng nhập mật khẩu
           </span>
 
           <span *ngIf="password.errors.remote">
@@ -41,10 +41,6 @@
       <button class="w-full" mat-raised-button color="primary"
               [disabled]="loginForm.invalid"
               (click)="login()">{{'login.login' | translate}}</button>
-
-      <div class="m-t-16">{{'login.have_no_account' | translate}}?
-        <a routerLink="/auth/register">{{'login.create_one' | translate}}</a>
-      </div>
     </form>
 
   </mat-card>

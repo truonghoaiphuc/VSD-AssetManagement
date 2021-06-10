@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '@core/authentication/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { filter } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,12 @@ import { filter } from 'rxjs/operators';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private auth: AuthService,
+    private _notificationService: ToastrService
+  ) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({

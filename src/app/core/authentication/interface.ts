@@ -2,9 +2,12 @@ export interface User {
   [propName: string]: any;
 
   id: number | string | null;
-  name?: string;
+  username?: string;
+  fullName?: string;
   email?: string;
   avatar?: string;
+  permissions?:any;
+  roles?: any;
 }
 
 export interface Token {
@@ -14,16 +17,16 @@ export interface Token {
   expires_in?: number;
 }
 
-export const admin: User = {
-  id: 1,
-  name: 'Zongbin',
-  email: 'nzb329@163.com',
-  avatar: './assets/images/avatar.jpg',
-};
+// export const admin: User = {
+//   id: 1,
+//   name: 'Zongbin',
+//   email: 'nzb329@163.com',
+//   avatar: './assets/images/avatar.jpg',
+// };
 
-export const guest: User = {
-  id: null,
-  name: 'unknown',
-  email: 'unknown',
-  avatar: './assets/images/avatar-default.jpg',
-};
+// export const guest: User = {
+//   id: null,
+//   name: 'unknown',
+//   email: 'unknown',
+//   avatar: './assets/images/avatar-default.jpg',
+// };

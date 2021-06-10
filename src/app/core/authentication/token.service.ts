@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { SystemConstants } from '@core/common/System.Constants';
 import { BehaviorSubject } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { LocalStorageService } from '../../shared/services/storage.service';
@@ -12,7 +13,7 @@ function capitalize(str: string) {
   providedIn: 'root',
 })
 export class TokenService {
-  private key = 'TOKEN';
+  private key = SystemConstants.CURRENT_USER;
   private change$ = new BehaviorSubject<Token>(this.store.get(this.key) as Token);
 
   constructor(private store: LocalStorageService) {}

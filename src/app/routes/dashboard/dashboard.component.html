@@ -1,1 +1,19 @@
 <page-header></page-header>
+
+<h3>Danh sách người dùng</h3>
+<mtx-grid [data]="users"
+[columns]="columns"
+[sortOnFront]="true"
+[rowHover]="true"
+sortActive="name"
+sortDirection="asc"
+[sortDisableClear]="true"
+[sortDisabled]="false"
+[multiSelectable]="true"
+[hideRowSelectionCheckbox]="true"
+[rowSelectable]="true"
+[rowSelected]="true"
+[rowSelectionFormatter]="true"
+sortStart="asc"
+>
+</mtx-grid>
