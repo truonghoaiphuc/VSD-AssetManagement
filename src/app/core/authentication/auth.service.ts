@@ -62,6 +62,7 @@ export class AuthService {
       .pipe(
         tap(token=>{
           this.token.set(token);
+          console.log(token);
         }),
         map(()=>this.check())
       );
